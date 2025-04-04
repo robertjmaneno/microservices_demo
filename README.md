@@ -38,6 +38,7 @@ You must have the following installed:
 - Go version 1.16 or higher  
 - PostgreSQL version 12 or higher  
 - Git
+- Visual Studio Code
 
 </details>
 
