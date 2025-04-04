@@ -1,0 +1,41 @@
+basePath: /
+definitions:
+  main.Product:
+    description: API for managing products in a microservices demo.
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: number
+    type: object
+host: localhost:8082
+info:
+  contact: {}
+  description: API for managing products in a microservices demo.
+  title: Product Service API
+  version: "1.0"
+paths:
+  /products:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all products from the database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Product'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get list of products
+      tags:
+      - products
+swagger: "2.0"

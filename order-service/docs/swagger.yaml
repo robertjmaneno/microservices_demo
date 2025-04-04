@@ -1,0 +1,50 @@
+basePath: /
+definitions:
+  main.OrderRequest:
+    description: API for managing orders in a microservices demo.
+    properties:
+      product_id:
+        type: integer
+    type: object
+host: localhost:8083
+info:
+  contact: {}
+  description: API for managing orders in a microservices demo.
+  title: Order Service API
+  version: "1.0"
+paths:
+  /orders:
+    post:
+      consumes:
+      - application/json
+      description: Create an order by checking product availability
+      parameters:
+      - description: Order request
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/main.OrderRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Order placed for {product_name} (ID: {product_id})!'
+          schema:
+            type: string
+        "400":
+          description: Invalid order
+          schema:
+            type: string
+        "404":
+          description: Product not found
+          schema:
+            type: string
+        "503":
+          description: Product service unavailable
+          schema:
+            type: string
+      summary: Place a new order
+      tags:
+      - orders
+swagger: "2.0"
